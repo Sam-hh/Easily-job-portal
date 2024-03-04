@@ -1,0 +1,18 @@
+<div class="landing" id="landing-page">
+    <div class="">
+        <!-- <img class="landing-img" src="/uploads/banner.png" alt=""> -->
+    </div>
+    <div class="">
+        <h2>A comprehensive platform for reliable</h2>
+        <h3>job opportunities and internships.</h3>
+        <p>
+            Get Discovered. Get Hired.
+        </p>
+        <a class="btn btn-dark" href="/jobs" role="button">I'm Job Seeker</a>
+        <% if(locals.userEmail){ %>
+            <a class="btn btn-dark" href="/jobs" role="button">Recruiter</a>
+            <% }else{ %>
+                <a class="btn btn-dark" href="/login" role="button">Recruiter</a>
+                <% } %>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <h2 class="text-center p-5 white" style="color: white;">Find Your Destiny</h2>
+    <div class="row justify-content-center">
+        <% jobs.forEach((job)=>{%>
+            <div class="card  login-bg d-inline-block 
+            m-2 mb-4" style="width: 18rem;">
+                <div class="card-body">
+                    <div class="mb-4">
+                        <h3>Hiring<span class="m-2"><i class="fa-solid fa-arrow-trend-up"></i></span></h3>
+                        <h5 class="card-title"><span></span> Category :
+                            <%= job.jobCategory %>
+                        </h5>
+                        <hr>
+                    </div>
+                    <p class="card-text"><span class=""><i class="fa-solid fa-signs-post"></i></span> Designation :
+                        <%= job.jobDesignation %>
+                    </p>
+                    <p class="card-text"><span class=""><i class="fa-solid fa-location-dot"></i></span>Job Location :
+                        <%= job.jobLocation %>
+                    </p>
+                    <p class="card-text"><span class=""><i class="fa-regular fa-building"></i></span> Name :
+                        <%= job.companyName %>
+                    </p>
+                    <p class="card-text"><span class=""><i class="fa-solid fa-money-bill"></i></span> :
+                        <%= job.salary %>
+                    </p>
+                    <a href="/jobs/<%=job.id%>" class="btn btn-primary m-1 add-width">View Details</a>
+                </div>
+            </div>
+            <%})%>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+<div class="container text-black mt-3  border-light-subtle rounded login-bg" style="width: 70%;">
+    <h2 class="text-center mb-3">New Job</h2>
+    <% if(errors) {%>
+        <ul class="mt-2 text-primary-emphasis bg-danger-subtle border border-danger-subtle rounded-3">
+            <li>
+                <%=errors.msg%>
+            </li>
+        </ul>
+        <%}%>
+            <form class="row g-3" action="/jobs" method="post">
+                <div class="col-md-6">
+                    <label for="jobCategory" class="form-label">Job Category*</label>
+                    <input type="text" class="form-control" id="jobCategory" name="jobCategory">
+                </div>
+                <div class="col-md-6">
+                    <label for="jobDesignation" class="form-label">Job Designation*</label>
+                    <input type="text" class="form-control" id="jobDesignation" name='jobDesignation'>
+                </div>
+                <div class="col-6">
+                    <label for="jobLocation" class="form-label">Job Location*</label>
+                    <input type="text" class="form-control" id="jobLocation" placeholder="" name="jobLocation">
+                </div>
+                <div class="col-6">
+                    <label for="companyName" class="form-label">Company Name*</label>
+                    <input type="text" class="form-control" id="companyName" placeholder="" name="companyName">
+                </div>
+                <div class="col-6">
+                    <label for="salary" class="form-label">Salary*</label>
+                    <input type="text" class="form-control" id="salary" placeholder="" name="salary">
+                </div>
+                <div class="col-md-6">
+                    <label for="applyBy" class="form-label">Apply By</label>
+                    <input type="text" class="form-control" id="applyBy" name="applyBy">
+                </div>
+                <div class="col-md-6">
+                    <label for="skillsRequired" class="form-label">Skills Required</label>
+                    <select id="skillsRequired" class="form-select" multiple aria-label="Multiple select example" name="skillsRequired">
+            <option disabled>Choose...</option>
+            <option>C++</option>
+            <option>Java</option>
+            <option>HTML</option>
+            <option>CSS</option>
+            <option>JS</option>
+            <option>Bootstrap</option>
+            <option>Node Js</option>
+            <option>PHP</option>
+            <option>Jquery</option>
+            <option>Express</option>
+        </select>
+                </div>
+                <div class="col-md-6 ">
+                    <label for="numberOfOpenings" class="form-label ">Openings*</label>
+                    <input type="number" class="form-control " id="numberOfOpenings" name="numberOfOpenings">
+                </div>
+                <div class="col-md-6 ">
+                    <label class="form-label " for="jobPosted">Job Posted</label>
+                    <input class="form-control " type="date" id="jobPosted" name="jobPosted">
+                </div>
+
+                <div class="col-md-6 ">
+                    <label for="applicants" class="form-label">Applicants</label>
+                    <select id="applicants" class="form-select " name="applicants">
+            <option selected>Choose...</option>
+            <option>Engineer</option>
+            <option>MCA</option>
+            <option>BCA</option>
+        </select>
+                </div>
+                <div class="col-12 mb-2">
+                    <button type="submit " class="btn btn-primary ">Submit</button>
+                </div>
+            </form>
+
+</div>

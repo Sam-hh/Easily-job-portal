@@ -1,0 +1,29 @@
+<div class="p-4">
+    <div class="container text-black p-4 border border-light-subtle rounded login-bg" style="width: 400px;">
+        <% if(errors) {%>
+            <ul class="mt-2 text-primary-emphasis bg-danger-subtle border border-danger-subtle rounded-3">
+                <li>
+                    <%=errors.msg%>
+                </li>
+            </ul>
+            <%}%>
+                <h2 class="mb-3 text-center">Register Account</h2>
+                <form action='/register' method="post">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" aria-describedby="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" name='email'>
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" name='password'>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <a href="/" class="btn btn-secondary">Login</a>
+                </form>
+    </div>
+</div>

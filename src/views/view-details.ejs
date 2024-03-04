@@ -1,0 +1,160 @@
+<div class="p-5">
+    <div id='view-details' class="container text-black  p-4 border border-light-subtle rounded login-bg "
+        style="width: 70%; ">
+        <!-- <a href="/jobs" class="btn btn-primary">Back</a> -->
+        <div class="details">
+            <div class="detail-heading p-3"><span>Job Details</span></div>
+    
+            <div class="detail-image"></div>
+            <div class="detail">
+                <label>Category:</label>
+                <span>
+                    <%= job.jobCategory %>
+                </span>
+            </div>
+            <div class="detail">
+                <label>Company Name:</label>
+                <span>
+                    <%= job.companyName %>
+                </span>
+            </div>
+            <div class="detail">
+                <label>Designation:</label>
+                <span>
+                    <%= job.jobDesignation %>
+                </span>
+            </div>
+            <div class="detail">
+                <label>Skills:</label>
+                <span>
+                    <%= job.skillsRequired %><span>
+            </div>
+            <div class="detail">
+                <label>Salary:</label>
+                <span>
+                    <%= job.salary %>
+                </span>
+            </div>
+            <div class="detail">
+                <label>Openings:</label>
+                <span>
+                    <%= job.numberOfOpenings %>
+                </span>
+            </div>
+            <div class="detail">
+                <label>Posted:</label>
+                <span>
+                    <%= job.jobPosted %>
+                </span>
+            </div>
+            <div class="detail">
+                <button type="button" class="btn btn-primary"
+                    onclick='setDisplay(["update-form"],"apply-form")'>Apply</button>
+    
+                <%if(locals.userEmail && job.createdBy==locals.userEmail){%>
+                    <button type="button" class="btn btn-primary"
+                        onclick='setDisplay(["view-details","apply-form"] , "update-form")'>Update</button>
+    
+    
+                    <button type="button" class="btn btn-danger"
+                        onclick="setDisplay(['update-form','apply-form'],'popup')">Delete</button>
+    
+                    <a class="btn btn-secondary" href="/jobs/applicants/<%= job.id %>">Applicants</a>
+                    <% } %>
+    
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Job Pop up -->
+
+<div class="hide-display container text-white my-5 p-4 border border-light-subtle rounded bg pop-up-pos" style="width: 15rem;" id="popup">
+    <form class="row g-3" action="delete/<%= job.id %>" method="post" >
+        <p style="color: black;">Are you sure you want to delete?</p>
+        <button type="submit " class="btn btn-danger ">Yes</button>
+        <button type="reset" class="btn btn-primary" onclick="setDisplay(['update-form','apply-form','popup'],'view-details')">No</button>
+    </form>
+</div>
+
+<!-- Update form -->
+<div class="hide-display container text-black my-5 p-4 border border-light-subtle rounded login-bg" style="width: 70%;" id="update-form">
+    <div class="place"><button class="btn" onclick="setDisplay(['update-form','apply-form'],'view-details')"><i class="fa-solid fa-x"></button></i>
+    </div>
+    <form class="row g-3" action="update/<%= job.id %>" method="post">
+        <div class="col-md-6">
+            <label for="jobCategory" class="form-label">Job Category</label>
+            <input type="text" class="form-control" id="jobCategory" name="jobCategory" value="<%= job.jobCategory %>">
+        </div>
+        <div class="col-md-6">
+            <label for="jobDesignation" class="form-label">Job Designation</label>
+            <input type="text" class="form-control" id="jobDesignation" name='jobDesignation' value="<%= job.jobDesignation %>">
+        </div>
+        <div class="col-6">
+            <label for="jobLocation" class="form-label">Job Location</label>
+            <input type="text" class="form-control" id="jobLocation" placeholder="" name="jobLocation" value="<%= job.jobLocation %>">
+        </div>
+        <div class="col-6">
+            <label for="companyName" class="form-label">Company Name</label>
+            <input type="text" class="form-control" id="companyName" placeholder="" name="companyName" value="<%= job.companyName %>">
+        </div>
+        <div class="col-md-6">
+            <label for="applyBy" class="form-label">Apply By</label>
+            <input type="text" class="form-control" id="applyBy" name="applyBy" value="<%= job.applyBy %>">
+        </div>
+        <div class="col-md-4">
+            <label for="skillsRequired" class="form-label">Skills Required</label>
+            <select id="skillsRequired" class="form-select" multiple aria-label="Multiple select example" name="skillsRequired">
+                    <% ['Choose..','C++', 'Java', 'HTML', 'CSS', 'JS', 'Bootstrap', 'Node Js', 'PHP', 'Jquery', 'Express'].forEach(function(skill) { %>
+                        <option <%= job.skillsRequired.includes(skill) ? 'selected' : '' %>><%= skill %></option>
+                    <% }); %>
+        </select>
+        </div>
+        <div class="col-md-2 ">
+            <label for="numberOfOpenings" class="form-label ">Number Of Openings</label>
+            <input type="number" class="form-control " id="numberOfOpenings" name="numberOfOpenings" value="<%= job.numberOfOpenings %>">
+        </div>
+        <div class="col-md-2 ">
+            <label class="form-label " for="jobPosted">Job Posted</label>
+            <input class="form-control " type="date" id="jobPosted" name="jobPosted" value="<%= job.jobPosted %>">
+        </div>
+
+        <div class="col-md-4 ">
+            <label for="applicants" class="form-label">Applicants</label>
+            <select id="applicants" class="form-select " name="applicants">
+                    <% ['Choose','Engineer','BCA','MCA'].forEach((applicant) => { %>
+                        <option <%= (applicant === job.applicants) ? 'selected' : '' %> ><%= applicant %></option>
+                    <% }) %>
+        </select>
+        </div>
+        <div class="col-12 ">
+            <button type="submit " class="btn btn-primary ">Submit</button>
+        </div>
+    </form>
+</div>
+
+
+<!-- Apply for the job Form -->
+<div class=" hide-display container text-black my-5 p-4 border border-light-subtle rounded bg pop-up-pos" style="width: 400px;" id="apply-form">
+    <div class="place"><button class="btn" onclick="setDisplay(['update-form','apply-form'],'view-details')"><i class="fa-solid fa-x"></button></i>
+    </div>
+    <form action='apply/<%= job.id %>' method="post" class="m-auto" enctype="multipart/form-data">
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="name">
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+            <input type="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="email">
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Contact</span>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="contact">
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Resume</span>
+            <input type="file" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" accept="application/pdf" name='resume'>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

@@ -1,0 +1,42 @@
+Job Seeker (github : https://github.com/Sam-hh/Easily-job-portal.git)
+
+Landing Page:
+
+    -> Upon landing on the website, users are greeted with a landing page that presents two options: "Job Seeker" and "Recruiter".
+
+Jobs Page:
+
+    -> If a user selects "Job Seeker", they are directed to the jobs page where they can explore various job listings.
+    -> Each job listing provides details about the job, such as the job title, company, location, and a brief description.
+    -> Users can click on a job listing to view more details about the job.
+
+Job Details Page:
+
+    -> On the job details page, users can find comprehensive information about the selected job.
+    -> If interested, users can click on the "Apply" button to initiate the application process.
+    -> Upon clicking "Apply", a form pops up where users can fill in their details.
+    -> If any information is missing or does not meet the requirements, validation errors are displayed.
+    -> After successfully submitting the form, users receive a notification confirming their application.
+    -> They are then redirected back to the job details page.
+
+For Recruiters:
+Jobs Page:
+
+    -> Recruiters, upon selecting "Recruiter", are directed to the jobs page where they can manage job listings.
+    -> Similar to job seekers, recruiters can view detailed job listings.
+
+Job Details Page:
+
+    -> Recruiters can click on a job listing to view more details.
+    -> If the recruiter is authorized to make changes, additional options such as "Update", "Delete", and "Applicants" are available.
+    -> The "Update" option allows recruiters to modify job details through a form.
+    -> The "Delete" option prompts a confirmation dialog before permanently removing the job listing.
+    -> Clicking "Applicants" leads to a page listing all applicants for the job, with the ability to view their resumes.
+
+Posted By You:
+
+    -> Recruiters have the option to filter jobs they have posted using the "Posted By You" feature, available in the navigation bar.
+
+Create New Job:
+
+    -> Recruiters can create and post new job listings using the "Create New Job" feature.

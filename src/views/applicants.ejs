@@ -1,0 +1,35 @@
+<div class="p-4">
+    <div id='view-details' class="container text-black p-4 border border-light-subtle rounded login-bg "
+        style="width: 90%; ">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Contact</th>
+                    <th scope="col">Resume</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%applicants.forEach(applicant=> {%>
+                    <tr>
+                        <th scope="row">
+                            <%= applicant.id %>
+                        </th>
+                        <td>
+                            <%= applicant.name%>
+                        </td>
+                        <td>
+                            <%= applicant.email %>
+                        </td>
+                        <td>
+                            <%= applicant.contact %>
+                        </td>
+                        <td><a href="/get-pdf/<%=applicant.id%>" target="_blank">View</a></td>
+                    </tr>
+                    <%})%>
+            </tbody>
+        </table>
+    </div>
+</div>
